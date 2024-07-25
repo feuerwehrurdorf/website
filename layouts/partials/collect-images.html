@@ -1,0 +1,11 @@
+{{ $images := slice }}
+{{ $content := .Page.Content }}
+{{ $doc := $content | plainify | safeHTML }}
+{{ $imgRegex := `(?i)<img[^>]+\bsrc="([^"]+)"` }}
+
+{{ $matches := findRE $imgRegex $doc }}
+{{ range $matches }}
+    {{ $images = $images | append . }}
+{{ end }}
+
+{{ len $images }}

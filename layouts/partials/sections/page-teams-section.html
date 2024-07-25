@@ -1,0 +1,60 @@
+{{- $site := .Site }}
+{{- $section := .section }}
+{{- with $section }}
+{{- if .enable }}
+<section class="content-section bg-white">
+    <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 py-[80px]">
+        <header class="max-w-[564px] mx-auto text-center mb-10">
+            {{- with .title }}
+            <h2 class="text-[3rem] lg:text-[4rem] text-[#091035] font-bold leading-none mb-5">{{ . | safeHTML }}</h2>
+            {{- end }}
+            {{- with .description }}
+            <p class="text-base text-gray-600 font-medium leading-normal mb-0">{{ . | safeHTML }}</p>
+            {{- end }}
+        </header>
+        <div class="flex flex-col md:flex-row justify-center md:space-x-[30px] xl:space-x-[60px] space-y-[60px] md:space-y-0">
+            {{- range .teams }}
+            <div>
+                <div class="w-[200px] mx-auto relative mb-5">
+                    <div class="w-[200px] h-[200px] rounded-full bg-[#E0D9CE] overflow-hidden">
+                        {{ partial "image" (dict "Src" .image "Alt" "Team image"
+                        "Loading"
+                        "eager"
+                        "Class"
+                        "w-full h-auto" "Command" "Fill"
+                        "Size" "240x240" ) }}
+                    </div>
+                    <div class="absolute top-3 -right-4 w-[50px] h-[50px] overflow-hidden">
+                        {{ partial "image" (dict "Src" .badge "Alt" "Team image"
+                        "Loading"
+                        "eager"
+                        "Class"
+                        "w-full h-auto" "Command" "Fill"
+                        "Size" "50x50" ) }}
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="mb-5">
+                        {{- with .name }}
+                        <h3 class="text-[2rem] text-[#101010] font-bold leading-[1.05] mb-1">{{ . | safeHTML }}</h3>
+                        {{- end }}
+                        {{- with .position }}
+                        <p class="text-base text-primary font-semibold leading-[1.05]">{{ . | safeHTML }}</p>
+                        {{- end }}
+                    </div>
+                    <div>
+                        {{- with .rank }}
+                        <p class="text-base text-gray-600 font-semibold leading-[1.05] mb-1">Rank : {{ . | safeHTML }}</p>
+                        {{- end }}
+                        {{- with .contact }}
+                        <p class="text-base text-gray-600 font-semibold leading-[1.05] mb-0">Contact : {{ . | safeHTML }}</p>
+                        {{- end }}
+                    </div>
+                </div>
+            </div>
+            {{- end }}
+        </div>
+    </div>
+</section>
+{{- end }}
+{{- end }}

@@ -1,0 +1,16 @@
+{{- with .Site.Data.home.banner_section }}
+{{- if .enable }}
+<section class="hero-section">
+    <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 py-[80px]">
+        <div class="aspect-w-[310] aspect-h-[126] md:aspect-w-[75] md:aspect-h-[14]">
+            <div class="w-full h-full absolute top-0 left-0 overflow-hidden">
+                {{ partial "image" (dict "Src" .image_mobile "Alt" "Banner image" "Loading" "eager" "Class" "w-full h-full md:hidden"
+                "DisplayMD" "780x" ) }}
+                {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "w-full h-full hidden md:block"
+                "DisplayXL" "1600x" ) }}
+            </div>
+        </div>
+    </div>
+</section>
+{{- end }}
+{{- end }}

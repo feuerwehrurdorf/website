@@ -1,0 +1,94 @@
+{{- $header := .Site.Params.header }}
+<header x-data="{sideNav: false, atTop: true}" class="header relative">
+    <div class="nav bg-white z-50"
+        :class="{ 'absolute w-full left-0 top-0 z-40': atTop, 'fixed w-full left-0 top-0 backdrop-blur-md transition-all duration-500 ease-[ease] delay-300 animate-fadeInDown shadow-lg z-50': !atTop }"
+        x-on:scroll.window="atTop = (window.pageYOffset > 200) ? false : true;">
+        <div class="nav__container container w-full max-w-screen-xl relative mx-auto px-5 xl:px-0">
+            <div class="nav__wrapper h-[108px] flex flex-wrap items-center justify-between">
+                <div class="nav__brand logo w-[76px] flex-none">
+                    <a href="{{ .Site.BaseURL }}">
+                        {{- with .Site.Data.header.logo }}
+                        <div class="w-[76px]">
+                            {{ partial "image" (dict "Src" . "Alt" "Slider image"
+                            "Loading"
+                            "eager"
+                            "Class"
+                            "w-full h-auto"
+                            "DisplaySM" "90x" ) }}
+                        </div>
+                        {{- end }}
+                    </a>
+                </div>
+                <div x-cloak
+                    class="nav__menu bg-white flex-1 fixed lg:static w-full h-screen lg:h-auto left-0 top-0 transition-all duration-300 ease-[ease] z-20"
+                    :class="sideNav ? 'visible opacity-100' : 'invisible lg:visible opacity-0 lg:opacity-100'">
+                    <div class="nav__toggle flex items-center justify-end lg:hidden pt-6 pr-6">
+                        <button @click="sideNav = !sideNav" name="menu"
+                            class="text-black cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease] z-30">
+                            <svg class="fill-current transition duration-300 ease-in-out transform" width="22" height="24">
+                                <line class="stroke-current stroke-2 transition duration-500 ease-in-out translate-x-1.5 translate-y-0 rotate-45" id="top" x1="0"
+                                    x2="22" y1="6" y2="6"></line>
+                                <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform -translate-x-[11px] translate-y-[7px] -rotate-45"
+                                    id="bottom" x1="0" x2="22" y1="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <nav x-data="{ selectedMenu: null, dropdownMenu: false }"
+                        class="navbar w-full h-full lg:h-auto relative">
+                        <ul class="navbar__menu menu lg:flex lg:items-center lg:justify-end list-none pl-0 pt-[40px] lg:pt-0 mb-0">
+                            {{- $currentPage := . }}
+                            {{- range $index, $menus := .Site.Menus.main }}
+                            {{- $menuURL := .URL | absLangURL }}
+                            {{- $pageURL:= $currentPage.Permalink | absLangURL }}
+                            {{- $active := eq $menuURL $pageURL }}
+                            <li @click="selectedMenu !== {{ $index }} ? selectedMenu = {{ $index }} : selectedMenu = null"
+                                class="menu__item relative group font-body text-gray-900 font-medium text-center lg:text-left leading-[1.25] mb-6 lg:mb-0 z-30">
+                                {{- if .HasChildren }}
+                                <span
+                                    class="lg:w-full inline-flex items-center justify-between lg:justify-start text-current py-[10px] px-[15px] cursor-pointer">
+                                    {{- .Name }}
+                                    <svg class="transition duration-300 ease-in-out transform lg:group-hover:-rotate-180 ml-2 mt-[2px]"
+                                        :class="{'-rotate-90': selectedMenu === {{ $index }} }" width="13" height="8"
+                                        viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.22656 1.33057L6.72656 6.83057L12.2266 1.33057" stroke="#111928" />
+                                    </svg>
+                                </span>
+                                <ul class="submenu whitespace-nowrap list-none bg-white w-full top-full transition-all duration-200 ease-[ease] transform origin-top z-10 lg:shadow-md lg:rounded-lg py-3 px-[15px] mt-0 mb-0"
+                                    :class="selectedMenu === {{ $index }} ? 'static visible scale-y-100 opacity-100' : 'absolute invisible lg:group-hover:visible scale-y-0 lg:group-hover:scale-y-100 opacity-0 lg:group-hover:opacity-100'"
+                                    aria-hidden="true">
+                                    {{- range .Children }}
+                                    {{- $childURL := .URL | absLangURL }}
+                                    {{- $active := eq $childURL $pageURL }}
+                                    <li class="submenu__item text-center lg:text-left {{ if $active }}submenu-active{{ end }}">
+                                        <a class="submenu__item-link text-current font-body leading-normal"
+                                            href="{{ .URL | relURL }}">{{ .Name
+                                            }}</a>
+                                    </li>
+                                    {{- end }}
+                                </ul>
+                                {{- else }}
+                                <a {{ if .Params.is_anchor -}}@click="sideNav = false" {{ end }}
+                                    class="menu__item-link text-current py-[10px] px-[15px] {{ with .Params.class }}{{ . }}{{ end }}"
+                                    href="{{ .URL | relURL }}">{{ .Name }}</a>
+                                {{- end }}
+                            </li>
+                            {{- end }}
+                        </ul>
+                    </nav>
+                </div>
+                <div class="nav__toggle w-6 flex-none flex items-center justify-end lg:hidden">
+                    <button @click="sideNav = !sideNav" name="menu"
+                        class="text-black cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease] z-10">
+                        <svg class="fill-current transition duration-300 ease-in-out transform" width="22" height="24">
+                            <line class="stroke-current stroke-2" id="top" x1="0"
+                                x2="22" y1="6" y2="6"></line>
+                            <line class="stroke-current stroke-2" id="middle" x1="0" x2="22" y1="12" y2="12">
+                            </line>
+                            <line class="stroke-current stroke-2" id="bottom" x1="0" x2="22" y1="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

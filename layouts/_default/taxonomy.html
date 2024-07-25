@@ -1,0 +1,20 @@
+{{- define "main" }}
+<div class="page__taxonomy pt-[108px] overflow-hidden bg-[#F9FAFB]">
+  {{- with .Params.page_header }}
+  {{- $include_dict := dict "Params" . }}
+  {{ partial "page-list-header.html" $include_dict }}
+  {{- end }}
+
+  <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 py-[80px]">
+    <div class="text-center">
+      {{- $paginator := .Paginate .Data.Pages }}
+      {{- range $index, $el := $paginator.Pages }}
+      <a class="text-gray-700 hover:text-primary" href="{{ .RelPermalink }}">
+        <h3 class="text-2xl font-heading font-medium mb-4">{{ .Title }}</h3>
+      </a>
+      {{- end }}
+    </div>
+    {{ partial "pagination.html" . }}
+  </div>
+</div>
+{{- end }}

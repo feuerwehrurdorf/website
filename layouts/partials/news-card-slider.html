@@ -1,0 +1,104 @@
+<section class="news-slider-section overflow-hidden">
+    <div x-data="{ 
+        init() {
+          new Splide(this.$refs.newsslider, {
+            type   : 'loop',
+            perPage  : 3,
+            breakpoints: {
+                640: {
+                    perPage: 1,
+                },
+            },
+            gap: '40px',
+            padding: { left: '0.5rem', right: '0.5rem' },
+            arrows: true,
+            pagination: false,
+            classes: {
+                arrows: 'splide__arrows',
+                arrow : 'splide__arrow',
+                prev  : 'splide__arrow--prev news-slider__arrow-prev',
+                next  : 'splide__arrow--next news-slider__arrow-next',
+                pagination: 'splide__pagination news-slider__pagination',
+                page      : 'splide__pagination__page news-slider__page',
+            },
+            }).mount()
+          },
+      }">
+
+        <div class="splide" x-ref="newsslider">
+            <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 mb-10 md:hidden">
+                <div class="flex items-center space-x-5">
+                    <div>
+                        <h3 class="text-black text-[2.25rem] font-bold uppercase mb-[10px]">{{ .year }}</h3>
+                        <div class="w-[56px] h-[3px] bg-primary"></div>
+                    </div>
+                    <div class="mb-[6px]">
+                        <a class="text-xl text-primary font-bold leading-[1.2]" href="/year/{{ .year | urlize }}">View All</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col pl-3">
+                <div
+                    class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 mt-10 md:mt-0 order-2 md:order-1">
+                    <div class="md:flex md:justify-between md:items-center mb-10">
+                        <div class="flex-1 hidden md:block">
+                            <div class="flex items-center space-x-5">
+                                <div>
+                                    <h3 class="text-black text-[2.25rem] font-bold uppercase mb-[10px]">{{ .year }}</h3>
+                                    <div class="w-[56px] h-[3px] bg-primary"></div>
+                                </div>
+                                <div class="mb-[6px]">
+                                    <a class="text-xl text-primary font-bold leading-[1.2]" href="/year/{{ .year | urlize }}">View All</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative w-[106px] flex-none">
+                            <div class="splide__arrows"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pl-[calc((100%_-_1200px)_/_2)] order-1 md:order-2">
+                    <div class="splide__track news-slider-track">
+                        <ul class="splide__list">
+                            {{- $query := where site.RegularPages "Type" "news" | first 5 }}
+                            {{- $query = (site.GetPage (printf "years/%s" (urlize .year))).Pages }}
+                            {{- range $index, $blog := $query }}
+                            <li class="splide__slide pb-6">
+                                <div
+                                    class="h-full rounded-[10px] shadow-[0px_10px_20.8px_-3px_rgba(0,0,0,0.1)] bg-white relative">
+                                    <div class="aspect-w-3 aspect-h-2">
+                                        <div
+                                            class="absolute top-0 left-0 w-full h-full rounded-t-[10px] overflow-hidden">
+                                            {{ partial "image" (dict "Src" .Params.image_cover "Alt" "Slider image"
+                                            "Loading"
+                                            "eager"
+                                            "Class"
+                                            "w-full h-auto" "Command" "Fill"
+                                            "Size" "420x280" ) }}
+                                        </div>
+                                    </div>
+                                    <div class="py-6 px-[25px]">
+                                        {{ partial "card-time.html" . }}
+                                        <div>
+                                            <a class="before:absolute before:content-[''] before:top-0 before:left-0 before:w-full before:h-full"
+                                                href="{{ .RelPermalink }}">
+                                                <h3
+                                                    class="text-[#101010] text-[1.375rem] font-heading font-semibold leading-[1.025] mb-2">
+                                                    {{ .Title | safeHTML }}</h3>
+                                            </a>
+                                            <p class="text-gray-600 leading-normal mb-0">{{ .Params.description |
+                                                safeHTML
+                                                }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {{- end }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

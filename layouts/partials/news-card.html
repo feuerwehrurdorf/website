@@ -1,0 +1,19 @@
+<div class="col-span-12 md:col-span-6 lg:col-span-4 rounded-[10px] shadow-[0px_10px_20.8px_-3px_rgba(0,0,0,0.1)] bg-white relative">
+    <div class="aspect-w-3 aspect-h-2">
+        <div class="absolute top-0 left-0 w-full h-full rounded-t-[10px] overflow-hidden">
+            {{ partial "image" (dict "Src" .Params.image_cover "Alt" "Slider image" "Loading" "eager" "Class" "w-full h-auto" "Command" "Fill" "Size" "420x280" ) }}
+        </div>
+    </div>
+    <div class="py-6 px-[25px]">
+        {{ partial "card-time.html" . }}
+        <div>
+            <a class="before:absolute before:content-[''] before:top-0 before:left-0 before:w-full before:h-full"
+                href="{{ .RelPermalink }}">
+                <h3 class="text-[#101010] text-[1.375rem] font-heading font-semibold leading-[1.025] mb-2">
+                    {{ .Title | safeHTML }}</h3>
+            </a>
+            <p class="text-gray-600 leading-normal mb-0">{{ .Params.description | safeHTML
+                }}</p>
+        </div>
+    </div>
+</div>

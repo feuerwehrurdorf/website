@@ -1,0 +1,16 @@
+<!-- Vendor JS -->
+{{- $alpine := resources.Get "js/vendor/alpinejs/dist/cdn.min.js" }}
+{{- $collapse := resources.Get "js/vendor/collapse/dist/cdn.min.js" }}
+{{- $persist := resources.Get "js/vendor/persist/dist/cdn.min.js" }}
+{{- $splide := resources.Get "js/vendor/splide/dist/js/splide.min.js" }}
+
+<!-- Combine JS -->
+{{- if .IsHome }}
+  {{- $js := slice $splide $persist $collapse $alpine | resources.Concat "js/main.js" }}
+  {{- $js_min := $js | resources.Minify }}
+  <script defer src="{{ $js_min.RelPermalink }}"></script>
+{{- else }}
+  {{- $js := slice $splide $persist $collapse $alpine | resources.Concat "js/main.js" }}
+  {{- $js_min := $js | resources.Minify }}
+  <script defer src="{{ $js_min.RelPermalink }}"></script>
+{{- end }}

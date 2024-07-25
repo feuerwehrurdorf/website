@@ -1,0 +1,54 @@
+{{- $site := .Site }}
+{{- $section := .section }}
+{{- with $section }}
+{{- if .enable }}
+<section class="page-slider-section pt-5">
+    <div x-data="{ 
+            init() {
+              new Splide(this.$refs.slider, {
+                type   : 'loop',
+                perPage  : 3,
+                breakpoints: {
+                    767: {
+                        perPage: 1,
+                    },
+                },
+                padding: { left: '8rem', right: '8rem' },
+                gap: '1.5rem',
+                arrows: false,
+                pagination: false,
+                classes: {
+                    arrows: 'splide__arrows',
+                    arrow : 'splide__arrow',
+                    prev  : 'splide__arrow--prev slider__arrow--prev',
+                    next  : 'splide__arrow--next slider__arrow--next',
+                    pagination: 'splide__pagination slider__pagination',
+                    page      : 'splide__pagination__page slider__page',
+                },
+                }).mount()
+              },
+          }">
+        <div class="splide" x-ref="slider">
+            <div class="splide__track page-slider__track">
+                <ul class="splide__list">
+                    {{- range $index, $images := .images }}
+                    <li class="splide__slide">
+                        <div class="aspect-w-7 aspect-h-5">
+                            <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
+                                {{ partial "image" (dict "Src" .image "Alt" "Slider image"
+                                "Loading"
+                                "eager"
+                                "Class"
+                                "w-full h-auto" "Command" "Fill"
+                                "Size" "420x300" ) }}
+                            </div>
+                        </div>
+                    </li>
+                    {{- end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{{- end }}
+{{- end }}

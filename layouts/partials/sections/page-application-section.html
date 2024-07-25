@@ -1,0 +1,115 @@
+{{- $site := .Site }}
+{{- $section := .section }}
+{{- with $section }}
+{{- if .enable }}
+<section class="history-section bg-white">
+    <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 py-[80px]">
+        <header class="max-w-[564px] mx-auto text-center mb-10">
+            {{- with .title }}
+            <h2 class="text-[4rem] text-[#091035] font-bold leading-none mb-5">{{ . | safeHTML }}</h2>
+            {{- end }}
+            {{- with .description }}
+            <p class="text-base text-gray-600 font-medium leading-normal mb-0">{{ . | safeHTML }}</p>
+            {{- end }}
+        </header>
+        <div class="max-w-[704px] mx-auto">
+            <div
+                class="contact__form-wrapper h-full bg-white py-[50px] px-5 md:px-[50px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),_0px_4px_6px_rgba(0,0,0,0.05)] rounded-[20px]">
+                <form class="contact__form" action="" method="post">
+                    <div>
+                        <div class="grid grid-cols-12 gap-x-5 mb-[25px]">
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="mb-[5px]">
+                                    <label class="text-sm text-black font-body leading-[1.6]" for="name">First
+                                        Name*</label>
+                                </div>
+                                <div>
+                                    <input
+                                        class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[14px] pb-[16px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                        type="text" id="name" name="name" required="">
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="mb-[5px]">
+                                    <label class="text-sm text-black font-body leading-[1.6]"
+                                        for="surname">Surname*</label>
+                                </div>
+                                <div>
+                                    <input
+                                        class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[14px] pb-[16px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                        type="text" id="surname" name="surname" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-x-5 mb-[25px]">
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="mb-[5px]">
+                                    <label class="text-sm text-black font-body leading-[1.6]"
+                                        for="street">Street/Nr*</label>
+                                </div>
+                                <div>
+                                    <input
+                                        class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[14px] pb-[16px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                        type="text" id="street" name="street" required="">
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="mb-[5px]">
+                                    <label class="text-sm text-black font-body leading-[1.6]" for="plz">PLZ/ORT*</label>
+                                </div>
+                                <div>
+                                    <input
+                                        class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[14px] pb-[16px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                        type="text" id="plz" name="plz" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-x-5 mb-[25px]">
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="mb-[5px]">
+                                    <label class="text-sm text-black font-body leading-[1.6]" for="email">Email
+                                        Address*</label>
+                                </div>
+                                <div>
+                                    <input
+                                        class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[14px] pb-[16px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                        type="email" id="email" name="email" required="">
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="mb-[5px]">
+                                    <label class="text-sm text-black font-body leading-[1.6]" for="phone">Phone
+                                        Number*</label>
+                                </div>
+                                <div>
+                                    <input
+                                        class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[14px] pb-[16px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                        type="number" id="phone" name="phone" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-[25px]">
+                            <div class="mb-[5px]">
+                                <label class="text-sm text-black font-body leading-[1.6]" for="message">Your
+                                    Message*</label>
+                            </div>
+                            <div>
+                                <textarea
+                                    class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[12px] pb-[14px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                    name="message" id="message" placeholder="Your Message..." rows="6"
+                                    required=""></textarea>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="w-full bg-primary text-center text-white text-lg font-body font-semibold leading-normal rounded-[10px] px-6 py-3">Send
+                                Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{{- end }}
+{{- end }}

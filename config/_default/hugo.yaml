@@ -1,0 +1,112 @@
+---
+title: Feuerwehr
+baseURL: /
+languageCode: en
+defaultContentLanguage: en
+canonifyURLs: false
+disableAliases: true
+disableHugoGeneratorInject: true
+enableEmoji: true
+enableGitInfo: false
+enableRobotsTXT: true
+paginate: 12
+rssLimit: 10
+preserveTaxonomyNames: true
+metaDataFormat: yaml
+summaryLength: 8
+googleAnalytics: "G-BPYZWSQKWP" # example : UA-123-45
+permalinks:
+  pages: "/:slug/"
+  page: /:slug/
+  blog: "/:slug/"
+  years: "/year/:slug/"
+taxonomies:
+  tag: tags
+  category: categories
+  author: authors
+  year: years
+# disableKinds:
+#   - RSS
+imaging:
+  quality: 100
+build:
+  writeStats: true
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+      wrapStandAloneImageWithinParagraph: false
+    renderer:
+      unsafe: true
+    renderHooks:
+      image:
+        enableDefault: true
+  highlight:
+    noClasses: false
+    style: solarized-dark256
+    tabWidth: 4
+outputs:
+  home:
+    - HTML
+    - RSS
+    - REDIRECTS
+    - HEADERS
+  section:
+    - HTML
+    - RSS
+mediaTypes:
+  text/netlify:
+    suffixes:
+      - ""
+    delimiter: ""
+outputFormats:
+  REDIRECTS:
+    mediaType: text/netlify
+    baseName: _redirects
+    isPlainText: true
+    notAlternative: true
+  HEADERS:
+    mediaType: text/netlify
+    baseName: _headers
+    isPlainText: true
+    notAlternative: true
+  SITEMAP:
+    mediaType: application/xml
+    baseName: sitemap
+    isHTML: false
+    isPlainText: true
+    noUgly: true
+    rel: sitemap
+caches:
+  getjson:
+    dir: ":cacheDir/:project"
+    maxAge: 10s
+sitemap:
+  changefreq: weekly
+  filename: sitemap.xml
+  priority: 0.5
+minify:
+  tdewolff:
+    html:
+      keepWhitespace: false
+module:
+  hugoVersion:
+    extended: true
+    min: 0.120.0
+    max: ""
+  mounts:
+    - source: assets
+      target: assets
+    - source: static
+      target: assets
+    - source: node_modules/alpinejs
+      target: assets/js/vendor/alpinejs
+    - source: node_modules/@alpinejs/collapse
+      target: assets/js/vendor/collapse
+    - source: node_modules/@alpinejs/persist
+      target: assets/js/vendor/persist
+    - source: node_modules/@splidejs/splide
+      target: assets/js/vendor/splide
+
+      

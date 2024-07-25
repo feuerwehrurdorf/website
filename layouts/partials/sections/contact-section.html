@@ -1,0 +1,98 @@
+{{- with .Site.Data.home.contact_section }}
+{{- if .enable }}
+<section class="contact-section bg-white">
+    <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 py-[80px]">
+        <div class="grid grid-cols-7 lg:gap-x-[40px] xl:gap-x-[60px] gap-y-10">
+            <div class="col-span-12 lg:col-span-3 flex flex-col justify-end">
+                <header class="mb-5">
+                    <h3 class="text-[2.5rem] lg:text-[4rem] text-[#091035] font-bold font-heading leading-none mb-0">{{ .title | safeHTML
+                        }}</h3>
+                </header>
+                <div class="mb-5">
+                    <p class="text-gray-600 leading-normal mb-0">{{ .content | safeHTML }}</p>
+                </div>
+                <div>
+                    {{- range .contact }}
+                    <div
+                        class="flex items-center space-x-5 p-6 mb-5 last:mb-0 bg-white shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),_0px_4px_6px_rgba(0,0,0,0.05)] rounded-[12px]">
+                        <div class="w-[48px] flex-none">
+                            {{- with .icon }}
+                            {{ partial (printf "svg/%s.svg" .) (dict "class" "w-[48px] h-[48px] text-current") }}
+                            {{- end }}
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-[#091035] font-normal leading-[1.2] mb-1">{{ .title }}</p>
+                            <h4 class="text-[#091035] text-lg lg:text-xl font-bold leading-normal mb-0">{{ .text }}</h4>
+                        </div>
+                    </div>
+                    {{- end }}
+                </div>
+            </div>
+            <div class="col-span-12 lg:col-span-4">
+                <div
+                    class="contact__form-wrapper h-full bg-white py-[50px] px-5 md:px-[50px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),_0px_4px_6px_rgba(0,0,0,0.05)] rounded-[20px]">
+                    <form class="contact__form" action="" method="post">
+                        <div>
+                            <div class="mb-[25px]">
+                                <div class="mb-[5px]">
+                                    <label class="text-sm text-black font-body leading-[1.6]" for="name">Your
+                                        Name*</label>
+                                </div>
+                                <div>
+                                    <input
+                                        class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[12px] pb-[14px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                        type="text" id="name" name="name" placeholder="Ex. Saul Ramirez" required="">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-12 gap-x-5 mb-[25px]">
+                                <div class="col-span-12 md:col-span-6">
+                                    <div class="mb-[5px]">
+                                        <label class="text-sm text-black font-body leading-[1.6]" for="email">Email
+                                            Address*</label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[12px] pb-[14px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                            type="email" id="email" name="email" placeholder="example@example.com"
+                                            required="">
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-6">
+                                    <div class="mb-[5px]">
+                                        <label class="text-sm text-black font-body leading-[1.6]" for="phone">Phone
+                                            Number*</label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[12px] pb-[14px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                            type="number" id="phone" name="phone" placeholder="Ex. +44XXXXXXXXX"
+                                            required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-[25px]">
+                                <div class="mb-[5px]">
+                                    <label class="text-sm text-black font-body leading-[1.6]" for="message">Your
+                                        Message*</label>
+                                </div>
+                                <div>
+                                    <textarea
+                                        class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[12px] pb-[14px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
+                                        name="message" id="message" placeholder="Your Message..." rows="9"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit"
+                                    class="w-full bg-primary text-center text-white text-lg font-body font-semibold leading-normal rounded-[10px] px-6 py-3">Send
+                                    Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{- end }}
+{{- end }}

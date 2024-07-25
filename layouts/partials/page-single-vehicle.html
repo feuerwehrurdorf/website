@@ -1,0 +1,71 @@
+{{- $params := .Params }}
+{{- with $params }}
+<main class="py-[80px]">
+    <div class="flex flex-col lg:flex-row lg:space-x-[40px] xl:space-x-[60px] space-y-10 lg:space-y-0">
+        <div class="w-full lg:w-2/5 pt-4">
+            <div class="aspect-w-1 aspect-h-1">
+                <div class="absolute top-0 left-0 w-full h-full rounded-[20px] overflow-hidden">
+                    {{ partial "image" (dict "Src" .image_cover "Alt" "Slider image"
+                    "Loading"
+                    "eager"
+                    "Class"
+                    "w-full h-auto" "Command" "Fill"
+                    "Size" "620x620" ) }}
+                </div>
+            </div>
+        </div>
+        <div class="w-full lg:w-3/5">
+            <table class="w-full border border-solid border-gray-300 border-collapse shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),_0px_10px_10px_rgba(0,0,0,0.04)]">
+                <tbody>
+                    {{- with .specification }}
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Vehicle type:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .vehicle_type }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Radio name:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .radio_name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Vintage:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .vintage }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Construction:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .construction }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Perfomance:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .perfomance }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Transmission:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .transmission }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Crew:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .crew }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Total weight:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .total_weight }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Dimensions (LxWxH):</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .dimensions }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4">Water tank:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .water_tank }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-2/5 border border-solid border-gray-300 border-collapse py-3 px-4 align-top">Pump:</td>
+                        <td class="w-3/5 border border-solid border-gray-300 border-collapse py-3 px-4">{{ .pump | markdownify }}</td>
+                    </tr>
+                    {{- end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{{- end }}

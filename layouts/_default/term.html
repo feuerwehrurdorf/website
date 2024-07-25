@@ -1,0 +1,33 @@
+{{- define "main" }}
+<div class="page__term pt-[108px] overflow-hidden bg-[#F9FAFB]">
+  {{- with .Params.page_header }}
+  {{- $include_dict := dict "Params" . }}
+  {{ partial "page-term-header.html" $include_dict }}
+  {{- end }}
+
+  <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 py-[80px]">
+    <div class="grid grid-cols-12 md:gap-x-10 xl:gap-x-10 gap-y-10 mb-10">
+      {{- $section := .Params.page_section }}
+      {{- $paginator := .Paginate .Data.Pages }}
+
+      {{- if eq $section "news" }}
+      {{- range $index, $el := $paginator.Pages }}
+      {{- if eq .Section $section }}
+      {{ partial "news-card.html" . }}
+      {{- end }}
+      {{- end }}
+      {{- end }}
+
+      {{- if eq $section "mission" }}
+      {{- range $index, $el := $paginator.Pages }}
+      {{- if eq .Section $section }}
+      {{ partial "mission-card.html" . }}
+      {{- end }}
+      {{- end }}
+      {{- end }}
+
+    </div>
+    {{ partial "pagination-total-posts.html" . }}
+  </div>
+</div>
+{{- end }}

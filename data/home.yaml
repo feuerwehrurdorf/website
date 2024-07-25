@@ -1,0 +1,55 @@
+#################
+#   Homepage   #
+#################
+
+### Hero section [ hero-section ]
+hero_section:
+  enable: true
+  title: "Feuerwehr Urdorf"
+  image_bg: "images/home-section-1-bg.png"
+  image: "images/home-section-1-hotline.png"
+
+### Banner section [ banner-section ]
+banner_section:
+  enable: true
+  image: "images/home-section-2.png"
+  image_mobile: "images/home-section-2-mobile.png"
+
+### Slider section [ slider-section ]
+slider_section:
+  enable: true
+  images:
+    - image: "images/home-section-3-1.png"
+    - image: "images/home-section-3-2.png"
+    - image: "images/home-section-3-3.png"
+    - image: "images/home-section-3-4.png"
+    - image: "images/home-section-3-5.png"
+
+### Home News section [ home-news-section ]
+news_slider_section:
+  enable: true
+
+### mission section [ mission-section ]
+mission_section:
+  enable: true
+
+### Vehicles section [ vehicles-section ]
+vehicles_section:
+  enable: true
+
+### Contact section [ contact-section ]
+contact_section:
+  enable: true
+  title: "Contact Us"
+  content: >
+    Do you have any questions or remarks? Then you can contact us via the contact form on this page. We will try to call you back as soon as possible after sending your question or comment.
+  contact:
+    - title: "24/7 Emergency line:"
+      text: "118"
+      icon: "contact-phone"
+    - title: "Headquarter"
+      text: "Birmensdorferstrasse 103, 8902 Urdorf"
+      icon: "contact-location"
+    - title: "Mail us:"
+      text: "feuerwehr@urdorf.ch"
+      icon: "contact-mail"

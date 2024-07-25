@@ -1,0 +1,39 @@
+{{- with .Site.Data.home.vehicles_section }}
+{{- if .enable }}
+<section class="mission-section">
+    <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 py-[80px]">
+        <div class="px-2 mb-10">
+            <h3 class="text-black text-[2.25rem] font-bold mb-[10px]">Vehicles</h3>
+            <div class="w-[56px] h-[3px] bg-primary"></div>
+        </div>
+        <div class="grid grid-cols-12 md:gap-x-5 xl:gap-x-5 gap-y-10 xl:gap-y-10">
+            {{- range where site.RegularPages "Type" "vehicles" | first 6 }}
+            <div class="col-span-12 md:col-span-6 lg:col-span-4 bg-white">
+                <div class="aspect-w-5 aspect-h-4">
+                    <div class="absolute top-0 left-0 w-full h-full rounded-[20px] overflow-hidden">
+                        {{ partial "image" (dict "Src" .Params.image_cover "Alt" "vehicle image"
+                        "Loading"
+                        "eager"
+                        "Class"
+                        "w-full h-auto" "Command" "Fill"
+                        "Size" "400x320" ) }}
+                    </div>
+                    <div class="absolute top-0 left-0 w-full h-full flex justify-center items-end p-5">
+                        <a class="w-full h-[64px] px-5 bg-black/70 rounded-[10px] flex items-center justify-between cursor-pointer"
+                            href="{{ .RelPermalink }}">
+                            <h3 class="text-white text-base lg:text-xl font-heading font-bold leading-[1.1] mb-0">
+                                {{ .Title | safeHTML }}</h3>
+                            <div>
+                                {{- partial "svg/icon-arrow-right.svg" (dict "class" "w-[15px] h-[25px] text-current")
+                                }}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{- end }}
+        </div>
+    </div>
+</section>
+{{- end }}
+{{- end }}

@@ -1,0 +1,91 @@
+<section class="mission-slider-section overflow-hidden">
+    <div x-data="{ 
+        init() {
+          new Splide(this.$refs.missionslider, {
+            type   : 'loop',
+            perPage  : 3,
+            breakpoints: {
+                640: {
+                    perPage: 1,
+                },
+            },
+            gap: '40px',
+            padding: { left: '0.5rem', right: '0.5rem' },
+            arrows: true,
+            pagination: false,
+            classes: {
+                arrows: 'splide__arrows',
+                arrow : 'splide__arrow',
+                prev  : 'splide__arrow--prev news-slider__arrow-prev',
+                next  : 'splide__arrow--next news-slider__arrow-next',
+                pagination: 'splide__pagination news-slider__pagination',
+                page      : 'splide__pagination__page news-slider__page',
+            },
+            }).mount()
+          },
+      }">
+
+        <div class="splide" x-ref="missionslider">
+            <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 mb-10 md:hidden">
+                <div class="flex items-center space-x-5">
+                    <div>
+                        <h3 class="text-black text-[2.25rem] font-bold uppercase mb-[10px]">{{ .year }}</h3>
+                        <div class="w-[56px] h-[3px] bg-primary"></div>
+                    </div>
+                    <div class="mb-[6px]">
+                        <a class="text-xl text-primary font-bold leading-[1.2]"
+                            href="/year/mission-{{ .year | urlize }}">View All</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col pl-3">
+                <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 mt-10 md:mt-0 order-2 md:order-1">
+                    <div class="md:flex md:justify-between md:items-center mb-10">
+                        <div class="flex-1 hidden md:block">
+                            <div class="flex items-center space-x-5">
+                                <div>
+                                    <h3 class="text-black text-[2.25rem] font-bold uppercase mb-[10px]">{{ .year }}</h3>
+                                    <div class="w-[56px] h-[3px] bg-primary"></div>
+                                </div>
+                                <div class="mb-[6px]">
+                                    <a class="text-xl text-primary font-bold leading-[1.2]"
+                                        href="/year/mission-{{ .year | urlize }}">View All</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative w-[106px] flex-none">
+                            <div class="splide__arrows"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pl-[calc((100%_-_1200px)_/_2)] order-1 md:order-2">
+                    <div class="splide__track news-slider-track">
+                        <ul class="splide__list">
+                            {{- $query := where site.RegularPages "Type" "mission" | first 5 }}
+                            {{- $query = (site.GetPage (printf "years/mission-%s" (urlize .year))).Pages }}
+                            {{- range $index, $card := $query }}
+                            <li class="splide__slide pb-6">
+                                <div
+                                    class="h-full rounded-[10px] shadow-[0px_10px_20.8px_-3px_rgba(0,0,0,0.1)] bg-white">
+                                    <div class="py-6 px-[25px]">
+                                        {{ partial "card-time.html" . }}
+                                        <div>
+                                            <h3
+                                                class="text-[#101010] text-[1.375rem] font-heading font-semibold leading-[1.025] mb-2">
+                                                {{ .Title | safeHTML }}</h3>
+                                            {{- with .Params.number }}
+                                            <p class="text-black leading-normal mb-0">Number: {{ . | safeHTML }}</p>
+                                            {{- end }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {{- end }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

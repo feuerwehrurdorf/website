@@ -1,0 +1,110 @@
+<footer class="bg-gray-100">
+    <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 pt-[80px] pb-[50px]">
+        <div>
+            <header
+                class="w-full md:w-[443px] h-[31px] mx-auto text-center flex justify-between items-center mb-[30px]">
+                <div class="w-[80px] md:w-[118px] h-[1px] bg-gray-600"></div>
+                <h3 class="text-2xl text-gray-500 font-bold mb-0">Our Partners</h3>
+                <div class="w-[80px] md:w-[118px] h-[1px] bg-gray-600"></div>
+            </header>
+            <div class="flex flex-wrap justify-center xl:justify-between items-center px-[20px] sm:px-[30px] lg:px-0">
+                {{- with .Site.Data.footer }}
+                {{- range .partners }}
+                <div class="w-[98px] flex-none mx-[24px] mb-[48px]">
+                    <div class="aspect-w-1 aspect-h-1">
+                        <div class="absolute top-0 left-0 w-full h-full rounded-full overflow-hidden">
+                            {{ partial "image" (dict "Src" .image "Alt" "Slider image"
+                            "Loading"
+                            "eager"
+                            "Class"
+                            "w-full h-auto" "Command" "Fill"
+                            "Size" "120x120" ) }}
+                        </div>
+                    </div>
+                </div>
+                {{- end }}
+                {{- end }}
+            </div>
+            <div class="bg-primary w-full h-[1px] lg:mt-10 mb-10"></div>
+        </div>
+
+        <div class="lg:flex lg:justify-between">
+            <div class="lg:w-[256px] lg:flex-none mb-10 lg:mb-0">
+                <a href="{{ .Site.BaseURL }}">
+                    {{- with .Site.Data.footer.logo }}
+                    <div class="w-[76px] mb-[10px]">
+                        {{ partial "image" (dict "Src" . "Alt" "Logo"
+                        "Loading"
+                        "eager"
+                        "Class"
+                        "w-full h-auto"
+                        "DisplaySM" "90x" ) }}
+                    </div>
+                    {{- end }}
+                </a>
+                {{- with .Site.Data.footer.description }}
+                <div>
+                    <p class="text-sm text-gray-600 font-medium font-body leading-normal mb-0">{{ . | safeHTML }}</p>
+                </div>
+                {{- end }}
+            </div>
+            <div class="mb-10 lg:mb-0">
+                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">CONTENTS</h4>
+                <ul class="list-none pl-0">
+                    {{- range $index, $menus_left := .Site.Menus.footer_left }}
+                    <li class="mb-3"><a class="text-base text-gray-600 font-medium font-body leading-normal mb-5"
+                            href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+                    {{- end }}
+                </ul>
+            </div>
+            <div class="mb-10 lg:mb-0">
+                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">COMPANY</h4>
+                <ul class="list-none pl-0">
+                    {{- range $index, $menus_left := .Site.Menus.footer_center }}
+                    <li class="mb-3"><a class="text-base text-gray-600 font-medium font-body leading-normal mb-5"
+                            href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+                    {{- end }}
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">GET IN TOUCH</h4>
+                {{- with .Site.Data.footer.contact }}
+                {{- range . }}
+                <div class="flex items-center space-x-[10px] mb-5">
+                    <div class="w-[24px] flex-none text-gray-600">
+                        {{- with .icon }}
+                        {{ partial (printf "svg/%s.svg" .) (dict "class" "w-[24px] h-[24px] text-current fill-current")
+                        }}
+                        {{- end }}
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-[15px] text-gray-600 font-medium leading-[1.2] mb-0">{{ .title }}</p>
+                    </div>
+                </div>
+                {{- end }}
+                {{- end }}
+            </div>
+        </div>
+
+        <div class="bg-primary w-full h-[1px] my-10"></div>
+
+        <div class="flex flex-col md:flex-row md:justify-between lg:items-center space-y-6">
+            <div>
+                {{- with .Site.Data.footer.copyright }}
+                <p class="text-gray-600 mb-0">{{ . | safeHTML }}</p>
+                {{- end }}
+            </div>
+            <div class="flex items-center space-x-5">
+                {{- with .Site.Data.footer.footer_socials }}
+                {{- range . }}
+                <a href="{{ .url }}" target="_blank">
+                    {{- with .icon }}
+                    {{ partial (printf "svg/%s.svg" .) (dict "class" "text-current") }}
+                    {{- end }}
+                </a>
+                {{- end }}
+                {{- end }}
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,345 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "assets/images"
+
+collections:
+  - name: "homepage"
+    label: "Homepage"
+    editor:
+      preview: false
+    files:
+      - label: "Homepage Configuration"
+        name: "home"
+        file: "data/home.yaml"
+        fields:
+          - label: "Hero Section"
+            name: "hero_section"
+            widget: "object"
+            fields:
+              - { label: "Enable", name: "enable", widget: "boolean" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Background Image", name: "image_bg", widget: "image" }
+              - { label: "Image", name: "image", widget: "image" }
+          - label: "Banner Section"
+            name: "banner_section"
+            widget: "object"
+            fields:
+              - { label: "Enable", name: "enable", widget: "boolean" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Mobile Image", name: "image_mobile", widget: "image" }
+          - label: "Slider Section"
+            name: "slider_section"
+            widget: "object"
+            fields:
+              - { label: "Enable", name: "enable", widget: "boolean" }
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                field:
+                  { label: "Image", name: "image", widget: "image" }
+          - label: "Home News Section"
+            name: "news_slider_section"
+            widget: "object"
+            fields:
+              - { label: "Enable", name: "enable", widget: "boolean" }
+          - label: "Mission Section"
+            name: "mission_section"
+            widget: "object"
+            fields:
+              - { label: "Enable", name: "enable", widget: "boolean" }
+          - label: "Vehicles Section"
+            name: "vehicles_section"
+            widget: "object"
+            fields:
+              - { label: "Enable", name: "enable", widget: "boolean" }
+          - label: "Contact Section"
+            name: "contact_section"
+            widget: "object"
+            fields:
+              - { label: "Enable", name: "enable", widget: "boolean" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Content", name: "content", widget: "text" }
+              - label: "Contact Info"
+                name: "contact"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "Icon", name: "icon", widget: "string" }
+
+  - name: "header"
+    label: "Header"
+    editor:
+      preview: false
+    files:
+      - label: "Header Configuration"
+        name: "header"
+        file: "data/header.yaml"
+        fields:
+          - label: "Navbar Top"
+            name: "navbar_top"
+            widget: "object"
+            fields:
+              - { label: "Enable", name: "enable", widget: "boolean" }
+              - label: "Contact Info"
+                name: "contact"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Icon", name: "icon", widget: "string" }
+          - { label: "Logo", name: "logo", widget: "image" }
+
+  - name: "footer"
+    label: "Footer"
+    editor:
+      preview: false
+    files:
+      - label: "Footer Configuration"
+        name: "footer"
+        file: "data/footer.yaml"
+        fields:
+          - { label: "Logo", name: "logo", widget: "image" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Partners"
+            name: "partners"
+            widget: "list"
+            field:
+              { label: "Image", name: "image", widget: "image" }
+          - label: "Contact Info"
+            name: "contact"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "string" }
+          - { label: "Copyright", name: "copyright", widget: "string" }
+          - label: "Footer Socials"
+            name: "footer_socials"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+
+  - name: "menus"
+    label: "Menus"
+    editor:
+      preview: false
+    files:
+      - label: "Menu"
+        name: "menus"
+        file: "config/_default/menus/menus.yaml"
+        fields:
+          - label: "Main Menu"
+            name: "main"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Weight", name: "weight", widget: "number" }
+              - { label: "Parent", name: "parent", widget: "string", required: false }
+              - label: "Params"
+                name: "params"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Class", name: "class", widget: "string" }
+          - label: "Footer Left Menu"
+            name: "footer_left"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Weight", name: "weight", widget: "number" }
+          - label: "Footer Center Menu"
+            name: "footer_center"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Weight", name: "weight", widget: "number" }
+
+  - name: "missionsindex"
+    label: "Missions Index"
+    editor:
+      preview: false
+    files:
+      - label: "Missions & Projects List Page"
+        name: "missions"
+        file: "content/mission/_index.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Sections", name: "sections", widget: "list", fields: [
+              { label: "Template", name: "template", widget: "string" },
+              { label: "Enable", name: "enable", widget: "boolean" },
+              { label: "Title", name: "title", widget: "string", required: false },
+              { label: "Image Background", name: "image_bg", widget: "image", required: false },
+              { label: "Image", name: "image", widget: "image", required: false },
+              { label: "Years", name: "years", widget: "list", default: ["2024"] }
+            ]
+          }
+          - { label: "Layout", name: "layout", widget: "string", default: "page-builder" }
+
+  - name: "mission"
+    label: "Missions"
+    folder: "content/mission"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Years", name: "years", widget: "list", default: ["mission-2024"] }
+      - { label: "Number", name: "number", widget: "string" }
+      - label: "Page Header"
+        name: "page_header"
+        widget: "object"
+        fields:
+          - { label: "Enable", name: "enable", widget: "boolean" }
+          - { label: "Background Image", name: "image_bg", widget: "image" }
+          - { label: "Image", name: "image", widget: "image" }
+      - { label: "Draft", name: "draft", widget: "boolean" }
+      - { label: 'Content', name: 'body', widget: 'markdown' }
+
+  - name: "newsindex"
+    label: "News Index"
+    editor:
+      preview: false
+    files:
+      - label: "News List"
+        name: "newslist"
+        file: "content/news/_index.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Template", name: "template", widget: "string" }
+              - { label: "Enable", name: "enable", widget: "boolean" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Background Image", name: "image_bg", widget: "image" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Years", name: "years", widget: "list", default: ["2024"] }
+          - { label: "Layout", name: "layout", widget: "string", default: "page-builder" }
+
+  - name: "news"
+    label: "News"
+    folder: "content/news"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Years", name: "years", widget: "list", default: ["2024"] }
+      - { label: "Image Cover", name: "image_cover", widget: "image" }
+      - { label: "Gallery Images", name: "gallery_images", widget: "list" }
+      - label: "Page Header"
+        name: "page_header"
+        widget: "object"
+        fields:
+          - { label: "Enable", name: "enable", widget: "boolean" }
+          - { label: "Background Image", name: "image_bg", widget: "image" }
+          - { label: "Image", name: "image", widget: "image" }
+      - { label: "Draft", name: "draft", widget: "boolean" }
+      - { label: "Layout", name: "layout", widget: "string" }
+      - { label: 'Content', name: 'body', widget: 'markdown' }
+
+  - name: "pagebuilder"
+    label: "About US"
+    folder: "content/page"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - label: "Sections"
+        name: "sections"
+        widget: "list"
+        fields:
+          - { label: "Template", name: "template", widget: "string" }
+          - { label: "Enable", name: "enable", widget: "boolean" }
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Background Image", name: "image_bg", widget: "image", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - label: "Images"
+            name: "images"
+            widget: "list"
+            required: false
+            field: { label: "Image", name: "image", widget: "image" }
+          - { label: "Content", name: "content", widget: "markdown", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - label: "Teams"
+            name: "teams"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Position", name: "position", widget: "string" }
+              - { label: "Rank", name: "rank", widget: "string" }
+              - { label: "Contact", name: "contact", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Badge", name: "badge", widget: "image" }
+          - label: "Histories"
+            name: "histories"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Content", name: "content", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "string", default: "page-builder" }
+
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - label: "Page Header"
+        name: "page_header"
+        widget: "object"
+        fields:
+          - { label: "Enable", name: "enable", widget: "boolean" }
+          - { label: "Background Image", name: "image_bg", widget: "image" }
+          - { label: "Image", name: "image", widget: "image" }
+      - { label: 'Content', name: 'body', widget: 'markdown' }
+
+  - name: "vehicles"
+    label: "Vehicles"
+    folder: "content/vehicles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Cover Image", name: "image_cover", widget: "image" }
+      - label: "Specification"
+        name: "specification"
+        widget: "object"
+        fields:
+          - { label: "Vehicle Type", name: "vehicle_type", widget: "string" }
+          - { label: "Radio Name", name: "radio_name", widget: "string" }
+          - { label: "Vintage", name: "vintage", widget: "string" }
+          - { label: "Construction", name: "construction", widget: "string" }
+          - { label: "Perfomance", name: "perfomance", widget: "string" }
+          - { label: "Transmission", name: "transmission", widget: "string" }
+          - { label: "Crew", name: "crew", widget: "string" }
+          - { label: "Total Weight", name: "total_weight", widget: "string" }
+          - { label: "Dimensions", name: "dimensions", widget: "string" }
+          - { label: "Water Tank", name: "water_tank", widget: "string" }
+          - { label: "Pump", name: "pump", widget: "text" }
+      - { label: "Draft", name: "draft", widget: "boolean" }
+      - { label: "Weight", name: "weight", widget: "number" }
+

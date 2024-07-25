@@ -1,0 +1,22 @@
+{{- define "main" }}
+<div class="page__list pt-[108px] overflow-hidden bg-[#F9FAFB]">
+  {{- with .Params.page_header }}
+  {{- $include_dict := dict "Params" . }}
+  {{ partial "page-list-header.html" $include_dict }}
+  {{- end }}
+
+
+  {{- $page := . }}
+  {{- range $section := $.Params.sections }}
+
+  {{- $partialPath := $section | printf "partials/sections/%s.html" }}
+  {{- if templates.Exists ( $partialPath ) }}
+  {{- partial $partialPath $page }}
+  {{- end }}
+
+  {{- end }}
+
+
+
+</div>
+{{- end }}

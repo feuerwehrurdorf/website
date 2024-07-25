@@ -1,0 +1,53 @@
+{{- $params := .Params }}
+{{- with $params }}
+{{- if .enable }}
+<section class="hero-section">
+    <div class="aspect-w-[175] aspect-h-[212] md:aspect-w-[16] md:aspect-h-[9] lg:aspect-w-11 lg:aspect-h-3">
+        <!-- check file existance -->
+        {{- if fileExists (add `assets/` (string .image_bg)) }}
+        {{- $image_src:= resources.Get .image_bg }}
+        {{- $image_bg:= $image_src.Resize "1540x webp q100" }}
+        <div class="hero-section__bg w-full h-full bg-cover bg-no-repeat bg-center"
+            style="background-image: url('{{ $image_bg.RelPermalink }}');">
+            {{ else }}
+            <div class="w-full h-full bg-cover bg-no-repeat bg-center bg-[url('/images/news-section-1-bg.png')]">
+                {{- end }}
+                <div class="h-full bg-black/60">
+                    <div class="container w-full h-full max-w-screen-xl mx-auto px-5 xl:px-0 pb-[80px] lg:pb-[40px] xl:pb-[80px]">
+                        <div class="w-full h-full flex items-end">
+                            <div class="w-full flex flex-col md:flex-row justify-between lg:items-center">
+                                <div class="flex-1">
+                                    {{- if .page_section }}
+                                    <div>
+                                        <a class="flex items-center space-x-[5px] text-2xl md:text-[2rem] lg:text-[2.5rem] text-primary font-bold font-body uppercase leading-none"
+                                            href="/{{ .page_section | urlize }}/">
+                                            <svg width="34" height="23" viewBox="0 0 34 23" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.93934 10.7714C0.353553 11.3572 0.353553 12.3069 0.93934 12.8927L10.4853 22.4386C11.0711 23.0244 12.0208 23.0244 12.6066 22.4386C13.1924 21.8528 13.1924 20.9031 12.6066 20.3173L4.12132 11.832L12.6066 3.34675C13.1924 2.76096 13.1924 1.81122 12.6066 1.22543C12.0208 0.639643 11.0711 0.639643 10.4853 1.22543L0.93934 10.7714ZM34 10.332H2V13.332H34V10.332Z"
+                                                    fill="#92B87C" />
+                                            </svg>
+                                            <span>{{ .title }}</span>
+                                        </a>
+                                    </div>
+                                    {{- end }}
+                                    {{- with .subtitle }}
+                                    <h1
+                                        class="text-white text-[3rem] md:text-[4rem] lg:text-[4.75rem] font-extrabold font-heading uppercase leading-none">
+                                        {{ . | safeHTML }}
+                                    </h1>
+                                    {{- end }}
+                                </div>
+                                <div class="w-[184px] md:w-[240px] lg:w-[286px] flex-none">
+                                    {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class"
+                                    "w-full h-auto" "DisplayMD" "360x" ) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+{{- end }}
+{{- end }}

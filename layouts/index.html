@@ -1,0 +1,13 @@
+{{- define "main" }}
+<div class="main pt-[108px] overflow-hidden bg-[#F9FAFB]">
+  {{- $page := . }}
+  {{- range $section := $.Params.sections }}
+
+  {{- $partialPath := $section | printf "partials/sections/%s.html" }}
+  {{- if templates.Exists ( $partialPath ) }}
+  {{- partial $partialPath $page }}
+  {{- end }}
+
+  {{- end }}
+</div>
+{{- end }}

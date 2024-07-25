@@ -1,0 +1,61 @@
+main:
+  - name: Home
+    url: "/"
+    weight: 10
+  - name: About Us
+    url: "/about-us/"
+    weight: 20
+  - name: News
+    url: "/news/"
+    weight: 30
+  - name: Mission
+    url: "/mission/"
+    weight: 40
+  - name: Company
+    url: "/company/"
+    weight: 50
+  - name: Contact Us
+    url: "/contact-us/"
+    params:
+      class: "button"
+    weight: 60
+  - name: Contact Us
+    parent: "Company"
+    url: "/contact-us/"
+    weight: 10
+  - name: Blog
+    parent: "Company"
+    url: "/"
+    weight: 20
+  - name: Vehicle
+    parent: "Company"
+    url: "/"
+    weight: 30
+
+footer_left:
+  - name: Home
+    url: "/"
+    weight: 10
+  - name: About Us
+    url: "about-us"
+    weight: 20
+  - name: News
+    url: "news"
+    weight: 30
+  - name: Mission
+    url: "mission"
+    weight: 40
+
+footer_center:
+  - name: Terms & Conditions
+    url: "terms-and-conditions"
+    weight: 10
+  - name: Privacy Policy
+    url: "privacy-policy"
+    weight: 20
+  - name: Refund Policy
+    url: "refund-policy"
+    weight: 30
+  - name: Cookies Policy
+    url: "cookies-policy"
+    weight: 40

@@ -1,0 +1,50 @@
+{{- define "main" }}
+<div class="page__list pt-[108px] overflow-hidden bg-[#F9FAFB]">
+  {{- if .Params.page_header }}
+  {{- $include_dict := dict "Params" .Params.page_header }}
+  {{ partial "page-list-header.html" $include_dict }}
+  {{ else }}
+  <section class="hero-section">
+    <div class="aspect-w-11 aspect-h-3">
+      <div class="w-full h-full bg-cover bg-no-repeat bg-center bg-[url('/images/news-section-1-bg.png')]">
+        <div class="h-full bg-black/60">
+          <div class="container w-full h-full max-w-screen-xl mx-auto px-5 xl:px-0 pb-[80px]">
+            <div class="w-full h-full flex items-end">
+              <div class="w-full flex flex-wrap justify-between items-center">
+                <div class="flex-1">
+                  {{- with .Title }}
+                  <h1 class="text-white lg:text-[6.625rem] font-extrabold font-heading uppercase leading-none">
+                    {{ . | safeHTML }}
+                  </h1>
+                  {{- end }}
+                </div>
+                <div class="w-[286px] flex-none">
+                  <img class="w-full h-auto" src="/images/home-section-1-hotline.png" alt="hotline">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{- end }}
+
+  <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 py-[80px]">
+    <div class="grid grid-cols-12 lg:gap-x-6 xl:gap-x-10 gap-y-6 lg:gap-y-10 mb-10">
+      {{- $section := .Params.page_section }}
+      {{- $paginator := .Paginate .Data.Pages }}
+
+      {{- range $index, $el := $paginator.Pages }}
+      {{- $include_dict := dict "Params" .Params }}
+      {{- if eq .Section "mission" }}
+      {{ partial "mission-card.html" $include_dict }}
+      {{- else }}
+      {{ partial "news-card.html" $include_dict }}
+      {{- end }}
+      {{- end }}
+    </div>
+    {{ partial "pagination-total-posts.html" . }}
+  </div>
+</div>
+{{- end }}

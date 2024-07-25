@@ -1,0 +1,64 @@
+{{- with .Site.Data.home.feature_section }}
+{{- if .enable }}
+<section id="features-section" class="feature-section bg-white">
+  <div class="container w-full max-w-screen-xl mx-auto pt-[60px] lg:pt-[100px] pb-[60px] px-5 xl:px-0">
+    <header class="max-w-[670px] mx-auto text-center mb-[80px]">
+      {{- if .title }}
+      <h2 class="text-[#3B19D0] text-[2rem] lg:text-[3rem] font-bold font-heading leading-[1.25] mb-0">{{
+        .title | safeHTML
+        }}
+      </h2>
+      {{- end }}
+    </header>
+    <div class="grid grid-cols-12 gap-6 lg:gap-8 items-center">
+      <div class="col-span-12 lg:col-span-4">
+        {{- range $index, $items := .feature_items }}
+        {{- if or (eq $index 0) (eq $index 1) }}
+        <div
+          class="md:w-[60%] lg:w-full mx-auto border border-solid border-[#3B19D0] rounded-[10px] px-8 py-6 first:mb-6">
+          <div class="flex justify-center mb-6">
+            {{- with .icon }}
+            {{ partial (printf "svg/%s.svg" .) (dict "class" "w-[60px] h-[60px] text-current") }}
+            {{- end }}
+          </div>
+          <div class="text-center">
+            <h3 class="text-[1.75rem] text-[#5238C0] font-bold leading-[1.25]">{{ .title | safeHTML }}</h3>
+            <p class="text-black leading-[1.5] mb-0">{{ .description | safeHTML }}</p>
+          </div>
+        </div>
+        {{- end }}
+        {{- end }}
+      </div>
+      <div class="col-span-12 lg:col-span-4 flex justify-center">
+        <div class="w-[320px]">
+          <!-- check file existance -->
+          {{- if fileExists (add `assets/` (string .image)) }}
+          {{- $image_src:= resources.Get .image }}
+          {{- $image:= $image_src.Resize "520x webp q100" }}
+          <img class="w-full h-auto" src="{{ $image.RelPermalink }}" alt="featured">
+          {{- end }}
+        </div>
+      </div>
+      <div class="col-span-12 lg:col-span-4">
+        {{- range $index, $items := .feature_items }}
+        {{- if or (eq $index 2) (eq $index 3) }}
+        <div
+          class="md:w-[60%] lg:w-full mx-auto border border-solid border-[#3B19D0] rounded-[10px] px-8 py-6 first:mb-6">
+          <div class="flex justify-center mb-6">
+            {{- with .icon }}
+            {{ partial (printf "svg/%s.svg" .) (dict "class" "w-[60px] h-[60px] text-current") }}
+            {{- end }}
+          </div>
+          <div class="text-center">
+            <h3 class="text-[1.75rem] text-[#5238C0] font-bold leading-[1.25]">{{ .title | safeHTML }}</h3>
+            <p class="text-black leading-[1.5] mb-0">{{ .description | safeHTML }}</p>
+          </div>
+        </div>
+        {{- end }}
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{- end }}
+{{- end }}

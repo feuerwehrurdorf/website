@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Articulat CF';
+    src: url('/fonts/ArticulatCFNormalRegular.woff2') format('woff2'),
+        url('/fonts/ArticulatCFNormalRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Articulat CF';
+    src: url('/fonts/ArticulatCFBold.woff2') format('woff2'),
+        url('/fonts/ArticulatCFBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Articulat CF';
+    src: url('/fonts/ArticulatCFRegular.woff2') format('woff2'),
+        url('/fonts/ArticulatCFRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Articulat CF';
+    src: url('/fonts/ArticulatCFMediumRegular.woff2') format('woff2'),
+        url('/fonts/ArticulatCFMediumRegular.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Articulat CF';
+    src: url('/fonts/ArticulatCFDemiBoldRegular.woff2') format('woff2'),
+        url('/fonts/ArticulatCFDemiBoldRegular.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}

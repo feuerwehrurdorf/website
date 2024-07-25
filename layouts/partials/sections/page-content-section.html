@@ -1,0 +1,14 @@
+{{- $site := .Site }}
+{{- $section := .section }}
+{{- with $section }}
+{{- if .enable }}
+<section class="content-section">
+    <div class="container w-full max-w-screen-xl mx-auto px-5 xl:px-0 pt-[80px] pb-[56px]">
+        <div class="max-w-[844px] mx-auto text-[1.375rem] text-gray-600 text-center font-medium leading-normal">
+            {{- $include_dict := dict "content" .content }}
+            {{ partial "markdownify.html" $include_dict }}
+        </div>
+    </div>
+</section>
+{{- end }}
+{{- end }}

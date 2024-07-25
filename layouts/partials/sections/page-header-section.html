@@ -1,0 +1,37 @@
+{{- $site := .Site }}
+{{- $section := .section }}
+{{- with $section }}
+{{- if .enable }}
+<section class="hero-section">
+  <div class="aspect-w-[175] aspect-h-[212] md:aspect-w-[16] md:aspect-h-[9] lg:aspect-w-11 lg:aspect-h-3">
+    <!-- check file existance -->
+    {{- if fileExists (add `assets/` (string .image_bg)) }}
+    {{- $image_src:= resources.Get .image_bg }}
+    {{- $image_bg:= $image_src.Resize "1540x webp q100" }}
+    <div
+      class="hero-section__bg w-full h-full bg-cover bg-no-repeat bg-center" style="background-image: url('{{ $image_bg.RelPermalink }}');">
+      {{ else }}
+    <div class="w-full h-full bg-cover bg-no-repeat bg-center bg-[url('/images/news-section-1-bg.png')]">
+      {{- end }}
+      <div class="h-full bg-black/60">
+        <div class="container w-full h-full max-w-screen-xl mx-auto px-5 xl:px-0 pb-[80px]">
+          <div class="w-full h-full flex items-end">
+            <div class="w-full flex flex-col md:flex-row justify-between md:items-center">
+              <div class="flex-1">
+                {{- if .title }}
+                <h1 class="text-white text-[3rem] md:text-[4.5rem] lg:text-[6.625rem] font-extrabold font-heading uppercase leading-none mb-7 lg:mb-0">{{ .title | safeHTML }}
+                </h1>
+                {{- end }}
+              </div>
+              <div class="w-[184px] lg:w-[286px] flex-none">
+                {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "w-full h-auto" "DisplayMD" "360x" ) }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{- end }}
+{{- end }}

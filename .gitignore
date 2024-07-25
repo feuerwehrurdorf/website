@@ -1,0 +1,11 @@
+*.log
+.cache
+.DS_Store
+src/.temp
+/node_modules/
+/public/
+/resources/
+.env
+.env.*
+hugo_stats.json
+.hugo_build.lock

@@ -1,0 +1,23 @@
+{{- with .Site.Data.header.navbar_top }}
+{{- if .enable }}
+<div class="bg-primary py-[10px] lg:py-0">
+    <div class="flex flex-col lg:flex-row justify-center items-center space-x-[50px]">
+        {{- with .contact }}
+        {{- range . }}
+        <div class="flex items-center space-x-[10px]">
+            <div class="w-[24px] flex-none text-white">
+                {{- with .icon }}
+                {{ partial (printf "svg/%s.svg" .) (dict "class" "w-[24px] h-[24px] text-current fill-current")
+                }}
+                {{- end }}
+            </div>
+            <div class="flex-1">
+                <p class="text-[15px] text-white font-medium leading-[2] lg:leading-[44px] mb-0">{{ .title }}</p>
+            </div>
+        </div>
+        {{- end }}
+        {{- end }}
+    </div>
+</div>
+{{- end }}
+{{- end }}

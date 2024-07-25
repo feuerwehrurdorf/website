@@ -1,0 +1,36 @@
+### Footer
+logo: "images/footer-logo.png"
+description: "Lorem ipsum dolor sit amet consectetur. Suspendisse dictumst turpis consequat libero eget turpis at mauris integer."
+partners:
+  - image: "images/Partner-Logo-1.png"
+  - image: "images/Partner-Logo-2.png"
+  - image: "images/Partner-Logo-3.png"
+  - image: "images/Partner-Logo-4.png"
+  - image: "images/Partner-Logo-5.png"
+  - image: "images/Partner-Logo-6.png"
+  - image: "images/Partner-Logo-7.png"
+  - image: "images/Partner-Logo-8.png"
+contact:
+  - title: "Birmensdorferstrasse 103, 8902 Urdorf"
+    icon: "icon-location"
+  - title: "24/7 Emergency line: 118"
+    icon: "icon-phone"
+  - title: "feuerwehr@urdorf.ch"
+    icon: "icon-mail"
+copyright: "© 2023. All Rights Reserved."
+footer_socials:
+  - title: Facebook
+    icon: icon-facebook
+    url: "#"
+  - title: Linkedin
+    icon: icon-linkedin
+    url: "#"
+  - title: Instagram
+    icon: icon-instagram
+    url: "#"
+  - title: Youtube
+    icon: icon-youtube
+    url: "#"
+  - title: Twitter
+    icon: icon-x
+    url: "#"

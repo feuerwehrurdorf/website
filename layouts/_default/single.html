@@ -1,0 +1,108 @@
+{{- define "main" }}
+<div class="page__single pt-[108px] overflow-hidden bg-[#F9FAFB]">
+    {{- if .Params.page_header }}
+    {{ partial "page-single-header.html" . }}
+    {{ else }}
+    <section class="hero-section">
+        <div class="aspect-w-[175] aspect-h-[212] md:aspect-w-[16] md:aspect-h-[9] lg:aspect-w-3 lg:aspect-h-1">
+            <div class="w-full h-full bg-cover bg-no-repeat bg-center bg-[url('/images/vehicle-header-bg.png')]">
+                <div class="h-full bg-black/60">
+                    <div class="container w-full h-full max-w-screen-xl mx-auto px-5 xl:px-0 pb-[80px]">
+                        <div class="w-full h-full flex items-end">
+                            <div class="w-full flex flex-wrap justify-between items-center">
+                                <div class="flex-1">
+                                    <div class="lg:w-[90%]">
+                                        {{- with .Title }}
+                                        <h1
+                                            class="text-white text-[3rem] md:text-[4rem] lg:text-[4.75rem] font-extrabold font-heading uppercase leading-none">
+                                            {{ . | safeHTML }}
+                                        </h1>
+                                        {{- end }}
+                                    </div>
+                                </div>
+                                <div class="w-[286px] flex-none">
+                                    <img class="w-full h-auto" src="/images/home-section-1-hotline.png" alt="hotline">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{- end }}
+
+    <div class="container w-full h-full max-w-screen-lg mx-auto px-5 xl:px-0 pb-[80px]">
+        {{- $include_dict := dict "Params" .Params }}
+        {{- if eq .Section "vehicles" }}
+        {{ partial "page-single-vehicle.html" $include_dict }}
+        {{- else }}
+        <div x-data="{ open: false }">
+            <div class="page__content {{ if or (eq .Section "news") (eq .Section "mission" ) }}max-w-[840px] mx-auto{{
+                end }} py-[80px] text-gray-600">
+                {{ .Content }}
+            </div>
+            {{ if .Params.gallery_images }}
+            <div x-show="open"
+                class="fixed h-screen inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+                @click.self="open = false">
+                <div class="relative w-[94%] lg:w-full max-w-[840px] rounded-lg">
+                    <button @click="open = false"
+                        class="absolute -top-12 right-0 w-8 h-8 bg-black text-gray-200 hover:text-gray-400 flex justify-center items-center">
+                        <span class="text-3xl leading-[32px]">
+                            <svg class="w-6 h-6 fill-current text-current" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 384 512">
+                                <path
+                                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div x-data="{ 
+                        init() {
+                          new Splide(this.$refs.galleries, {
+                            type   : 'loop',
+                            perPage  : 1,
+                            breakpoints: {
+                                640: {
+                                    perPage: 1,
+                                },
+                            },
+                            gap: '2rem',
+                            arrows: true,
+                            pagination: false,
+                            classes: {
+                                arrows: 'splide__arrows',
+                                arrow : 'splide__arrow',
+                                prev  : 'splide__arrow--prev gallery__arrow--prev left-4',
+                                next  : 'splide__arrow--next gallery__arrow--next right-4',
+                                pagination: 'splide__pagination gallery__pagination',
+                                page      : 'splide__pagination__page gallery__page',
+                            },
+                            }).mount()
+                          },
+                      }">
+                        <div x-ref="galleries" class="splide">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    {{- range .Params.gallery_images }}
+                                    <li class="splide__slide">
+                                        <div class="aspect-w-16 aspect-h-9">
+                                            <div class="absolute w-full h-full top-0 left-0">
+                                                {{ partial "image" (dict "Src" . "Alt" "Slider image" "Loading" "eager"
+                                                "Class" "w-full h-auto" "Command" "Fill" "Size" "880x495" ) }}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {{- end }}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{- end }}
+        </div>
+        {{- end }}
+    </div>
+</div>
+{{- end }}
