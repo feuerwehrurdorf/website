@@ -4,7 +4,7 @@
             <header
                 class="w-full md:w-[443px] h-[31px] mx-auto text-center flex justify-between items-center mb-[30px]">
                 <div class="w-[80px] md:w-[118px] h-[1px] bg-gray-600"></div>
-                <h3 class="text-2xl text-gray-500 font-bold mb-0">Our Partners</h3>
+                <h3 class="text-2xl text-gray-500 font-bold mb-0">Unsere Partner</h3>
                 <div class="w-[80px] md:w-[118px] h-[1px] bg-gray-600"></div>
             </header>
             <div class="flex flex-wrap justify-center xl:justify-between items-center px-[20px] sm:px-[30px] lg:px-0">
@@ -49,7 +49,7 @@
                 {{- end }}
             </div>
             <div class="mb-10 lg:mb-0">
-                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">CONTENTS</h4>
+                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">INHALT</h4>
                 <ul class="list-none pl-0">
                     {{- range $index, $menus_left := .Site.Menus.footer_left }}
                     <li class="mb-3"><a class="text-base text-gray-600 font-medium font-body leading-normal mb-5"
@@ -58,7 +58,7 @@
                 </ul>
             </div>
             <div class="mb-10 lg:mb-0">
-                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">COMPANY</h4>
+                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">ÜBER</h4>
                 <ul class="list-none pl-0">
                     {{- range $index, $menus_left := .Site.Menus.footer_center }}
                     <li class="mb-3"><a class="text-base text-gray-600 font-medium font-body leading-normal mb-5"
@@ -67,7 +67,7 @@
                 </ul>
             </div>
             <div>
-                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">GET IN TOUCH</h4>
+                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">KONTAKT</h4>
                 {{- with .Site.Data.footer.contact }}
                 {{- range . }}
                 <div class="flex items-center space-x-[10px] mb-5">

@@ -34,7 +34,7 @@
                     </div>
                     <div class="mb-[6px]">
                         <a class="text-xl text-primary font-bold leading-[1.2]"
-                            href="/year/mission-{{ .year | urlize }}">View All</a>
+                            href="/year/mission-{{ .year | urlize }}">Alle</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="mb-[6px]">
                                     <a class="text-xl text-primary font-bold leading-[1.2]"
-                                        href="/year/mission-{{ .year | urlize }}">View All</a>
+                                        href="/year/mission-{{ .year | urlize }}">Alle</a>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,13 @@
                                                 class="text-[#101010] text-[1.375rem] font-heading font-semibold leading-[1.025] mb-2">
                                                 {{ .Title | safeHTML }}</h3>
                                             {{- with .Params.number }}
-                                            <p class="text-black leading-normal mb-0">Number: {{ . | safeHTML }}</p>
+                                            <p class="text-black leading-normal mb-0">Einsatznummer: {{ . | safeHTML }}</p>
+                                            {{- end }}
+                                            {{- with .Params.street }}
+                                            <p class="text-black leading-normal mb-0">Strasse: {{ . | safeHTML }}</p>
+                                            {{- end }}
+                                            {{- with .Params.group }}
+                                            <p class="text-black leading-normal mb-0">Gruppe: {{ . | safeHTML }}</p>
                                             {{- end }}
                                         </div>
                                     </div>

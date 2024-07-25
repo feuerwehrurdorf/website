@@ -40,16 +40,18 @@ vehicles_section:
 ### Contact section [ contact-section ]
 contact_section:
   enable: true
-  title: "Contact Us"
-  content: >
-    Do you have any questions or remarks? Then you can contact us via the contact form on this page. We will try to call you back as soon as possible after sending your question or comment.
+  title: "Kontakt"
+  content: ""
   contact:
-    - title: "24/7 Emergency line:"
+    - title: "Notruf"
       text: "118"
       icon: "contact-phone"
-    - title: "Headquarter"
+    - title: "Feuerwehrdepot"
       text: "Birmensdorferstrasse 103, 8902 Urdorf"
       icon: "contact-location"
-    - title: "Mail us:"
+    - title: "Sekretariat"
+      text: "Bahnhofstrasse 46, 8902 Urdorf, 044 736 51 40"
+      icon: "contact-location"
+    - title: "E-Mail"
       text: "feuerwehr@urdorf.ch"
       icon: "contact-mail"
