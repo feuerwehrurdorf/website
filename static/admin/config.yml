@@ -167,7 +167,7 @@ collections:
     editor:
       preview: false
     files:
-      - label: "Missions & Projects List Page"
+      - label: "Missions List Page"
         name: "missions"
         file: "content/mission/_index.md"
         fields:
