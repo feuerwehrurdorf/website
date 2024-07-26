@@ -1,8 +1,8 @@
 ---
-title: Feuerwehr
+title: Feuerwehr Urdorf
 baseURL: /
-languageCode: en
-defaultContentLanguage: en
+languageCode: de
+defaultContentLanguage: de
 canonifyURLs: false
 disableAliases: true
 disableHugoGeneratorInject: true
@@ -14,7 +14,7 @@ rssLimit: 10
 preserveTaxonomyNames: true
 metaDataFormat: yaml
 summaryLength: 8
-googleAnalytics: "G-BPYZWSQKWP" # example : UA-123-45
+googleAnalytics: "NONE" # example : UA-123-45
 permalinks:
   pages: "/:slug/"
   page: /:slug/

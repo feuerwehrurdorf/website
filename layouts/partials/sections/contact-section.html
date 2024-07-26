@@ -22,8 +22,15 @@
                         </div>
                         <div class="flex-1">
                             <p class="text-[#091035] font-normal leading-[1.2] mb-1">{{ .title }}</p>
-                            <h4 class="text-[#091035] text-lg lg:text-xl font-bold leading-normal mb-0">{{ .text }}</h4>
-                        </div>
+                            {{- if eq .icon "contact-mail" }}
+                            <h4 class="mb-0"><a class="text-[#091035] text-lg lg:text-xl font-bold leading-normal"
+                                    href="mailto:{{ .text }}" target="_blank">{{ .text }}</a></h4>
+                            {{- else if eq .icon "contact-phone" }}
+                            <h4 class="mb-0"><a class="text-[#091035] text-lg lg:text-xl font-bold leading-normal"
+                                    href="tel:118" target="_blank">{{ .text }}</a></h4>
+                            {{- else }}
+                            <p class="text-[#091035] text-lg lg:text-xl font-bold leading-normal mb-0">{{ .text }}</p>
+                            {{- end }}                        </div>
                     </div>
                     {{- end }}
                 </div>
@@ -35,57 +42,52 @@
                         <div>
                             <div class="mb-[25px]">
                                 <div class="mb-[5px]">
-                                    <label class="text-sm text-black font-body leading-[1.6]" for="name">Your
-                                        Name*</label>
+                                    <label class="text-sm text-black font-body leading-[1.6]" for="name">Name*</label>
                                 </div>
                                 <div>
                                     <input
                                         class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[12px] pb-[14px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
-                                        type="text" id="name" name="name" placeholder="Ex. Saul Ramirez" required="">
+                                        type="text" id="name" name="name" placeholder="z.B. Peter Müller" required="">
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-x-5 mb-[25px]">
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-[5px]">
-                                        <label class="text-sm text-black font-body leading-[1.6]" for="email">Email
-                                            Address*</label>
+                                        <label class="text-sm text-black font-body leading-[1.6]" for="email">E-Mail Adresse*</label>
                                     </div>
                                     <div>
                                         <input
                                             class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[12px] pb-[14px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
-                                            type="email" id="email" name="email" placeholder="example@example.com"
+                                            type="email" id="email" name="email" placeholder="z.B. peter@bluewin.ch"
                                             required="">
                                     </div>
                                 </div>
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-[5px]">
-                                        <label class="text-sm text-black font-body leading-[1.6]" for="phone">Phone
-                                            Number*</label>
+                                        <label class="text-sm text-black font-body leading-[1.6]" for="phone">Telefonnummer</label>
                                     </div>
                                     <div>
                                         <input
                                             class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[12px] pb-[14px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
-                                            type="number" id="phone" name="phone" placeholder="Ex. +44XXXXXXXXX"
+                                            type="text" id="phone" name="phone" placeholder="z.B. +41 79 424 42 42"
                                             required="">
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-[25px]">
                                 <div class="mb-[5px]">
-                                    <label class="text-sm text-black font-body leading-[1.6]" for="message">Your
-                                        Message*</label>
+                                    <label class="text-sm text-black font-body leading-[1.6]" for="message">Nachricht*</label>
                                 </div>
                                 <div>
                                     <textarea
                                         class="bg-white w-full text-sm text-black font-body leading-none border border-gray-400 rounded-[8px] px-[25px] pt-[12px] pb-[14px] placeholder:text-gray-400 placeholder:font-normal placeholder:text-sm placeholder:leading-none focus:outline-none focus:border-gray-500 focus:ring-transparent focus:ring-0"
-                                        name="message" id="message" placeholder="Your Message..." rows="9"
+                                        name="message" id="message" placeholder="Deine Nachricht an die Feuerwehr Urdorf..." rows="9"
                                         required=""></textarea>
                                 </div>
                             </div>
                             <div>
                                 <button type="submit"
-                                    class="w-full bg-primary text-center text-white text-lg font-body font-semibold leading-normal rounded-[10px] px-6 py-3">Send
-                                    Message</button>
+                                    class="w-full bg-primary text-center text-white text-lg font-body font-semibold leading-normal rounded-[10px] px-6 py-3">Nachricht abschicken</button>
                             </div>
                         </div>
                     </form>

@@ -1,10 +1,10 @@
 ---
-title: "Missions & Projects"
-description: "Missions & Projects"
+title: "Einsätze"
+description: "Einsätze"
 sections:
   - template: page-header-section
     enable: true
-    title: "Missions & Projects"
+    title: "Einsätze"
     image_bg: "images/news-section-1-bg.png"
     image: "images/home-section-1-hotline.png"
   - template: mission-slider-section

@@ -5,16 +5,17 @@
         <div class="px-2 mb-10">
             <div class="md:flex md:items-center md:space-x-5">
                 <div>
-                    <h3 class="text-black text-[2.25rem] font-bold mb-[10px]">Missions & Projects</h3>
+                    <h3 class="text-black text-[2.25rem] font-bold mb-[10px]">Einsätze</h3>
                     <div class="w-[56px] h-[3px] bg-primary"></div>
                 </div>
                 <div class="mb-[6px] hidden md:block">
-                    <a class="text-xl text-primary font-bold leading-[1.2]" href="/mission">View All</a>
+                    <a class="text-xl text-primary font-bold leading-[1.2]" href="/mission">Alle</a>
                 </div>
             </div>
         </div>
         <div class="grid grid-cols-12 md:gap-x-8 xl:gap-x-10 gap-y-10">
-            {{- range where site.RegularPages "Type" "mission" | first 9 }}
+            {{- $query := where site.RegularPages "Type" "mission" }}
+            {{- range $index, $card := first 9 $query }}
             <div
                 class="col-span-12 md:col-span-6 lg:col-span-4 rounded-[10px] shadow-[0px_10px_20.8px_-3px_rgba(0,0,0,0.1)] bg-white">
                 <div class="py-6 px-[25px]">
@@ -23,7 +24,13 @@
                         <h3 class="text-[#101010] text-[1.375rem] font-heading font-semibold leading-[1.025] mb-2">
                             {{ .Title | safeHTML }}</h3>
                         {{- with .Params.number }}
-                        <p class="text-black leading-normal mb-0">Number: {{ . | safeHTML }}</p>
+                        <p class="text-black leading-normal mb-0">Einsatznummer: {{ . | safeHTML }}</p>
+                        {{- end }}
+                        {{- with .Params.street }}
+                        <p class="text-black leading-normal mb-0">Strasse: {{ . | safeHTML }}</p>
+                        {{- end }}
+                        {{- with .Params.group }}
+                        <p class="text-black leading-normal mb-0">Gruppe: {{ . | safeHTML }}</p>
                         {{- end }}
                     </div>
                 </div>

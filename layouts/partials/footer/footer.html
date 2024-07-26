@@ -4,23 +4,25 @@
             <header
                 class="w-full md:w-[443px] h-[31px] mx-auto text-center flex justify-between items-center mb-[30px]">
                 <div class="w-[80px] md:w-[118px] h-[1px] bg-gray-600"></div>
-                <h3 class="text-2xl text-gray-500 font-bold mb-0">Our Partners</h3>
+                <h3 class="text-2xl text-gray-500 font-bold mb-0">Unsere Partner</h3>
                 <div class="w-[80px] md:w-[118px] h-[1px] bg-gray-600"></div>
             </header>
             <div class="flex flex-wrap justify-center xl:justify-between items-center px-[20px] sm:px-[30px] lg:px-0">
                 {{- with .Site.Data.footer }}
                 {{- range .partners }}
                 <div class="w-[98px] flex-none mx-[24px] mb-[48px]">
-                    <div class="aspect-w-1 aspect-h-1">
-                        <div class="absolute top-0 left-0 w-full h-full rounded-full overflow-hidden">
-                            {{ partial "image" (dict "Src" .image "Alt" "Slider image"
-                            "Loading"
-                            "eager"
-                            "Class"
-                            "w-full h-auto" "Command" "Fill"
-                            "Size" "120x120" ) }}
+                    <a href="{{ .url }}" target="_blank">
+                        <div class="aspect-w-1 aspect-h-1">
+                            <div class="absolute top-0 left-0 w-full h-full rounded-full overflow-hidden">
+                                {{ partial "image" (dict "Src" .image "Alt" "Slider image"
+                                "Loading"
+                                "eager"
+                                "Class"
+                                "w-full h-auto" "Command" "Fill"
+                                "Size" "120x120" ) }}
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 {{- end }}
                 {{- end }}
@@ -49,7 +51,7 @@
                 {{- end }}
             </div>
             <div class="mb-10 lg:mb-0">
-                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">CONTENTS</h4>
+                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">INHALT</h4>
                 <ul class="list-none pl-0">
                     {{- range $index, $menus_left := .Site.Menus.footer_left }}
                     <li class="mb-3"><a class="text-base text-gray-600 font-medium font-body leading-normal mb-5"
@@ -58,7 +60,7 @@
                 </ul>
             </div>
             <div class="mb-10 lg:mb-0">
-                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">COMPANY</h4>
+                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">ÜBER</h4>
                 <ul class="list-none pl-0">
                     {{- range $index, $menus_left := .Site.Menus.footer_center }}
                     <li class="mb-3"><a class="text-base text-gray-600 font-medium font-body leading-normal mb-5"
@@ -67,7 +69,7 @@
                 </ul>
             </div>
             <div>
-                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">GET IN TOUCH</h4>
+                <h4 class="text-base text-gray-600 font-body font-bold leading-none mb-5">KONTAKT</h4>
                 {{- with .Site.Data.footer.contact }}
                 {{- range . }}
                 <div class="flex items-center space-x-[10px] mb-5">
@@ -78,7 +80,15 @@
                         {{- end }}
                     </div>
                     <div class="flex-1">
+                        {{- if eq .icon "icon-mail" }}
+                        <p class="mb-0"><a class="text-[15px] text-gray-600 font-medium leading-[1.2]"
+                                href="mailto:{{ .title }}" target="_blank">{{ .title }}</a></p>
+                        {{- else if eq .icon "icon-phone" }}
+                        <p class="mb-0"><a class="text-[15px] text-gray-600 font-medium leading-[1.2]" href="tel:118"
+                                target="_blank">{{ .title }}</a></p>
+                        {{- else }}
                         <p class="text-[15px] text-gray-600 font-medium leading-[1.2] mb-0">{{ .title }}</p>
+                        {{- end }}
                     </div>
                 </div>
                 {{- end }}

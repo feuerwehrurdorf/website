@@ -2,60 +2,55 @@ main:
   - name: Home
     url: "/"
     weight: 10
-  - name: About Us
-    url: "/about-us/"
+  - name: Über Uns
+    url: "/ueber/"
     weight: 20
   - name: News
     url: "/news/"
     weight: 30
-  - name: Mission
+  - name: Einsätze
     url: "/mission/"
     weight: 40
-  - name: Company
+  - name: Extern
     url: "/company/"
     weight: 50
-  - name: Contact Us
+  - name: Kontakt
     url: "/contact-us/"
     params:
       class: "button"
     weight: 60
-  - name: Contact Us
-    parent: "Company"
-    url: "/contact-us/"
+  - name: Lodur
+    parent: "Extern"
+    url: "https://lodur-zh.ch/urdorf/"
     weight: 10
-  - name: Blog
-    parent: "Company"
-    url: "/"
+  - name: Feuerwehr Cloud
+    parent: "Extern"
+    url: "https://files.feuerwehrurdorf.ch/"
     weight: 20
-  - name: Vehicle
-    parent: "Company"
-    url: "/"
+  - name: GVZ
+    parent: "Extern"
+    url: "https://www.gvz.ch/hauptnavigation/feuerwehr"
     weight: 30
+  - name: FKS CSSP CSP / Feukos
+    parent: "Extern"
+    url: "https://www.feukos.ch/"
+    weight: 40
 
 footer_left:
   - name: Home
     url: "/"
     weight: 10
-  - name: About Us
-    url: "about-us"
+  - name: Über Uns
+    url: "ueber"
     weight: 20
   - name: News
     url: "news"
     weight: 30
-  - name: Mission
+  - name: Einsätze
     url: "mission"
     weight: 40
 
 footer_center:
-  - name: Terms & Conditions
-    url: "terms-and-conditions"
+  - name: Impressum
+    url: "impressum"
     weight: 10
-  - name: Privacy Policy
-    url: "privacy-policy"
-    weight: 20
-  - name: Refund Policy
-    url: "refund-policy"
-    weight: 30
-  - name: Cookies Policy
-    url: "cookies-policy"
-    weight: 40

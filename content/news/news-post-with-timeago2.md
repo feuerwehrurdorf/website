@@ -1,10 +1,10 @@
 ---
-title: "3 Feuerwehr Urdorf is recruiting firefighters"
+title: "This Post Using Timeago Date 2"
 description: "Lorem ipsum dolor sit amet consectetur. Dui consectetur tristique dui nam purus sollicitudin ac enim."
-slug: "3-feuerwehr-urdorf-is-recruiting-firefighters"
-date: 2024-07-01T06:00:00+00:00
+slug: "this-post-using-timeago-date-2"
+date: 2024-07-24T11:00:00+00:00
 years: ["2024"]
-image_cover: "images/news-cover-3.jpg"
+image_cover: "images/news-cover-1.png"
 gallery_images:
   - "images/term-news-header-bg.png"
   - "images/about-section-1-bg.png"

@@ -2,7 +2,7 @@
 navbar_top:
   enable: true
   contact:
-    - title: "Emergency : 118"
+    - title: "Notruf: 118"
       icon: "icon-phone"
     - title: "Birmensdorferstrasse 103, 8902 Urdorf"
       icon: "icon-location"

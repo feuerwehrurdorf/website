@@ -106,8 +106,9 @@ collections:
           - label: "Partners"
             name: "partners"
             widget: "list"
-            field:
-              { label: "Image", name: "image", widget: "image" }
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "URL", name: "url", widget: "string" }
           - label: "Contact Info"
             name: "contact"
             widget: "list"
@@ -166,7 +167,7 @@ collections:
     editor:
       preview: false
     files:
-      - label: "Missions & Projects List Page"
+      - label: "Missions List Page"
         name: "missions"
         file: "content/mission/_index.md"
         fields:

@@ -1,5 +1,5 @@
 ---
-title: "This Post Using Timeago Date"
+title: "This Post Using Timeago Date 1"
 description: "Lorem ipsum dolor sit amet consectetur. Dui consectetur tristique dui nam purus sollicitudin ac enim."
 slug: "this-post-using-timeago-date"
 date: 2024-07-24T11:00:00+00:00
