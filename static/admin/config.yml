@@ -1,6 +1,11 @@
 backend:
-  name: git-gateway
+  name: gitea
+  repo: tobru/fwu-website
   branch: main
+  app_id: 63f9f5f1-d152-48f2-8e2d-a78e24a249d2
+  api_root: https://git.tbrnt.ch/api/v1
+  base_url: https://git.tbrnt.ch
+  auth_endpoint: https://git.tbrnt.ch/login/oauth/authorize
 
 media_folder: "assets/images"
 public_folder: "assets/images"
