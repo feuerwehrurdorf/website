@@ -22,8 +22,15 @@
                         </div>
                         <div class="flex-1">
                             <p class="text-[#091035] font-normal leading-[1.2] mb-1">{{ .title }}</p>
-                            <h4 class="text-[#091035] text-lg lg:text-xl font-bold leading-normal mb-0">{{ .text }}</h4>
-                        </div>
+                            {{- if eq .icon "contact-mail" }}
+                            <h4 class="mb-0"><a class="text-[#091035] text-lg lg:text-xl font-bold leading-normal"
+                                    href="mailto:{{ .text }}" target="_blank">{{ .text }}</a></h4>
+                            {{- else if eq .icon "contact-phone" }}
+                            <h4 class="mb-0"><a class="text-[#091035] text-lg lg:text-xl font-bold leading-normal"
+                                    href="tel:118" target="_blank">{{ .text }}</a></h4>
+                            {{- else }}
+                            <p class="text-[#091035] text-lg lg:text-xl font-bold leading-normal mb-0">{{ .text }}</p>
+                            {{- end }}                        </div>
                     </div>
                     {{- end }}
                 </div>

@@ -53,8 +53,8 @@
                                         <path d="M1.22656 1.33057L6.72656 6.83057L12.2266 1.33057" stroke="#111928" />
                                     </svg>
                                 </span>
-                                <ul class="submenu whitespace-nowrap list-none bg-white w-full top-full transition-all duration-200 ease-[ease] transform origin-top z-10 lg:shadow-md lg:rounded-lg py-3 px-[15px] mt-0 mb-0"
-                                    :class="selectedMenu === {{ $index }} ? 'static visible scale-y-100 opacity-100' : 'absolute invisible lg:group-hover:visible scale-y-0 lg:group-hover:scale-y-100 opacity-0 lg:group-hover:opacity-100'"
+                                <ul class="submenu whitespace-nowrap list-none bg-white w-full lg:w-auto top-full transition-all duration-200 ease-[ease] transform origin-top z-10 lg:shadow-md lg:rounded-lg py-3 px-[15px] mt-0 mb-0"
+                                    :class="selectedMenu === {{ $index }} ? 'static lg:absolute visible scale-y-100 opacity-100' : 'absolute invisible lg:group-hover:visible scale-y-0 lg:group-hover:scale-y-100 opacity-0 lg:group-hover:opacity-100'"
                                     aria-hidden="true">
                                     {{- range .Children }}
                                     {{- $childURL := .URL | absLangURL }}

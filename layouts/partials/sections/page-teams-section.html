@@ -47,7 +47,8 @@
                         <p class="text-base text-gray-600 font-semibold leading-[1.05] mb-1">Rang: {{ . | safeHTML }}</p>
                         {{- end }}
                         {{- with .contact }}
-                        <p class="text-base text-gray-600 font-semibold leading-[1.05] mb-0">E-Mail: {{ . | safeHTML }}</p>
+                        <p class="mb-0">E-Mail: <a class="text-base text-gray-600 font-semibold leading-[1.05]"
+                            href="mailto:{{ . }}" target="_blank">{{ . }}</a></p>
                         {{- end }}
                     </div>
                 </div>

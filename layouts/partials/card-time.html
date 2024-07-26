@@ -1,13 +1,6 @@
 {{- if .Date }}
 <div class="mb-2">
-    {{ $diff := now.Sub .Lastmod }}
-    {{ $hours := $diff.Hours }}
-    {{ if lt $hours 24 }}
-    <span class="text-[#92B87C] text-base leading-normal">about {{ math.Round $hours }} hours
-        ago</span>
-    {{ else }}
-    <span class="text-[#92B87C] text-base leading-normal">{{ .Date | time.Format "Jan 06, 2006"
-        }}</span>
-    {{ end }}
+    <span class="text-[#92B87C] text-base leading-normal">{{ .Date | time.Format "Jan 06, 2006 3:04 PM"
+    }}</span>
 </div>
 {{- end }}
