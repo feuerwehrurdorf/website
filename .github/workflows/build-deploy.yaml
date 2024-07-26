@@ -48,3 +48,43 @@ jobs:
       run: |
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+  deploy:
+    name: Deploy to tbrnt
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Cache kubectl
+      id: cache-kubectl
+      uses: actions/cache@v3
+      with:
+        path: /usr/local/bin/kubectl
+        key: ${{ runner.os }}-kubectl-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-kubectl-
+
+    - name: Install kubectl if not cached
+      if: steps.cache-kubectl.outputs.cache-hit != 'true'
+      run: |
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        chmod +x kubectl
+        sudo mv kubectl /usr/local/bin/
+
+    - name: Create Kubeconfig for Deployment
+      run: |
+        mkdir -p $HOME/.kube
+        echo "${{ secrets.KUBECONFIG_DEPLOY }}" > $HOME/.kube/config
+
+    - name: Verify kubectl version
+      run: kubectl version --client
+
+    - name: Inject Git SHA into deployment
+      run: |
+        sed -i "s/{{GIT_SHA}}/${{ github.sha }}/" deployment/deployment.yaml
+
+    - name: Deploy to Kubernetes
+      run: kubectl apply -f deployment/ -n fwu-website

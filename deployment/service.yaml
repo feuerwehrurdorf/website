@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: website
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: formapi
+    port: 8000
+    targetPort: formapi
+  selector:
+    app: website
